@@ -2,317 +2,530 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Работа курьером-партнером — Высокий доход и бонусы</title>
-    <meta name="description" content="Стань курьером-партнером Яндекс Еды и Лавки. Доход до 120 000 ₽ в месяц, ежедневные выплаты и свободный график.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Работа курьером в Яндекс Еде — Стань партнером в 2026 году</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=YS+Display:wght@700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap');
         
+        :root {
+            --ya-yellow: #FFCC00;
+            --ya-black: #21201F;
+            --ya-gray: #F5F4F2;
+            --ya-green: #20C997;
+        }
+
         body { 
             font-family: 'Manrope', sans-serif; 
-            scroll-behavior: smooth; 
-            background-color: #ffffff;
-            color: #1a1a1a;
+            color: var(--ya-black); 
+            background: #fff; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-
-        .yandex-yellow { background-color: #ffcc00; }
-        .yandex-text { color: #ffcc00; }
         
-        /* Стили для полноэкранного фона */
-        .hero-fullscreen {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background-image: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), 
-                              url('https://pic.rutubelist.ru/video/2024-12-05/dc/ea/dceacd78fea8f4bc8bf7e007746f94d5.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+        .font-ya { font-family: 'YS Display', sans-serif; }
 
+        /* Custom UI Elements */
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        
         .btn-primary {
-            background: #ffcc00;
-            color: #000;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: var(--ya-yellow);
+            color: var(--ya-black);
+            border-radius: 20px;
+            font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(255, 204, 0, 0.3); }
+
+        .btn-outline {
+            border: 2px solid #E6E6E6;
+            border-radius: 20px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--ya-yellow); background: var(--ya-gray); }
+
+        /* Bento Grid Architecture */
+        .bento-card {
+            background: var(--ya-gray);
+            border-radius: 32px;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+        .bento-card:hover { background: #fff; border-color: var(--ya-yellow); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        /* Calculator Styles */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #E2E2E2; border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%;
+            background: var(--ya-yellow); border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-top: -11px; cursor: pointer;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
-            background: #ffd633;
-            box-shadow: 0 20px 40px rgba(255, 204, 0, 0.3);
-        }
+        /* Animations */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .hero-img-anim { animation: float 6s ease-in-out infinite; }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #eee;
-        }
+        .marquee-container { background: var(--ya-yellow); overflow: hidden; white-space: nowrap; padding: 15px 0; }
+        .marquee-content { display: inline-block; animation: marquee 40s linear infinite; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        .stat-card-glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            transition: all 0.3s ease;
-        }
+        /* Compare Tabs */
+        .tab-active { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: black !important; }
 
-        .stat-card-glass:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ffcc00;
-        }
+        /* FAQ */
+        .faq-ans { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin 0.4s ease; }
+        .faq-item.active .faq-ans { max-height: 300px; margin-top: 20px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-        .pulse-button {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
-        }
+        /* Progress Bar */
+        #scroll-p { position: fixed; top: 0; left: 0; height: 4px; background: var(--ya-yellow); z-index: 2000; width: 0%; transition: width 0.1s; }
     </style>
 </head>
 <body>
 
-    <!-- Навигация -->
-    <nav id="navbar" class="fixed w-full z-50 glass-nav">
-        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 yandex-yellow rounded-xl flex items-center justify-center shadow-sm">
-                    <span class="font-black text-xl text-black">Я</span>
+    <div id="scroll-p"></div>
+
+    <nav class="fixed w-full z-[1000] glass-nav py-4">
+        <div class="container mx-auto px-6 max-w-7xl flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-black rounded-2xl flex items-center justify-center">
+                    <span class="text-white font-black text-2xl font-ya">Я</span>
                 </div>
-                <div class="nav-brand-text text-white">
-                    <p class="font-extrabold text-lg leading-none tracking-tight">Партнеры</p>
-                    <p class="text-[10px] opacity-70 font-bold uppercase tracking-widest mt-1">Доставка еды</p>
+                <div>
+                    <span class="block font-black text-xl uppercase leading-none tracking-tighter">Еда</span>
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Официальный набор</span>
                 </div>
-            </div>
-            
-            <div class="hidden lg:flex items-center space-x-8 font-bold text-sm text-white nav-links">
-                <a href="#home" class="hover:text-yellow-400 transition-colors">Главная</a>
-                <a href="#income" class="hover:text-yellow-400 transition-colors">Доход</a>
-                <a href="#advantages" class="hover:text-yellow-400 transition-colors">Преимущества</a>
-                <a href="#faq" class="hover:text-yellow-400 transition-colors">Вопросы</a>
             </div>
 
-            <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary px-6 py-2.5 rounded-xl text-sm font-bold pulse-button">
-                Начать зарабатывать
-            </a>
+            <div class="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-[2px] text-gray-500">
+                <a href="#benefits" class="hover:text-black transition">Преимущества</a>
+                <a href="#income" class="hover:text-black transition">Доход</a>
+                <a href="#process" class="hover:text-black transition">Как начать</a>
+                <a href="#faq" class="hover:text-black transition">Вопросы</a>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="tel:88005553535" class="hidden sm:block font-extrabold text-sm">8 (800) 555-35-35</a>
+                <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary px-8 py-4 text-xs uppercase tracking-widest shadow-xl">Стать курьером</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Главный экран (Full Screen) -->
-    <section id="home" class="hero-fullscreen overflow-hidden">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="max-w-3xl animate__animated animate__fadeInUp">
-                <div class="inline-flex items-center space-x-2 bg-yellow-400 text-black px-4 py-2 rounded-full mb-8 shadow-lg">
+    <section class="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+        <div class="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full mb-8">
                     <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
                     </span>
-                    <span class="text-xs font-extrabold uppercase tracking-wider">Набор открыт во всех городах РФ</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest">Набор открыт в вашем городе</span>
                 </div>
-                
-                <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-8 text-white">
-                    Твой город — <br><span class="text-yellow-400 italic">твои правила.</span>
+                <h1 class="font-ya text-6xl lg:text-[100px] font-black leading-[0.85] mb-10 tracking-tighter">
+                    Свобода <br><span class="text-yellow-400">в каждом</span> <br>заказе.
                 </h1>
-                
-                <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-lg leading-relaxed font-medium">
-                    Сотрудничай с сервисами Яндекс Еда и Лавка. Получай оплату каждый день и работай в своем ритме.
+                <p class="text-xl text-gray-500 mb-12 max-w-lg font-medium leading-relaxed">
+                    Доставляйте еду из ресторанов и продукты из магазинов. Сами выбирайте график, район и способ передвижения. Выплаты — ежедневно.
                 </p>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-                    <div class="stat-card-glass p-6 rounded-2xl">
-                        <p class="text-4xl font-black mb-1">до 5 500 ₽</p>
-                        <p class="text-sm font-bold italic opacity-80 uppercase tracking-wide">в день на авто</p>
-                    </div>
-                    <div class="stat-card-glass p-6 rounded-2xl">
-                        <p class="text-4xl font-black mb-1">до 3 500 ₽</p>
-                        <p class="text-sm font-bold italic opacity-80 uppercase tracking-wide">в день пешком</p>
+                <div class="flex flex-col sm:flex-row gap-6 mb-16">
+                    <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary px-12 py-7 text-xl shadow-2xl">Подать заявку</a>
+                    <div class="flex items-center gap-4">
+                        <div class="flex -space-x-3">
+                            <img class="w-12 h-12 rounded-full border-4 border-white" src="https://randomuser.me/api/portraits/men/11.jpg">
+                            <img class="w-12 h-12 rounded-full border-4 border-white" src="https://randomuser.me/api/portraits/women/22.jpg">
+                            <img class="w-12 h-12 rounded-full border-4 border-white" src="https://randomuser.me/api/portraits/men/33.jpg">
+                        </div>
+                        <p class="text-[10px] font-black uppercase text-gray-400 tracking-widest">
+                            <span class="text-black">15,000+</span> партнеров <br>уже с нами
+                        </p>
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-5">
-                    <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary px-12 py-6 rounded-2xl text-center font-black text-xl flex items-center justify-center shadow-2xl">
-                        Заполнить анкету <i class="fas fa-arrow-right ml-3"></i>
-                    </a>
+                <div class="grid grid-cols-3 gap-8 pt-10 border-t border-gray-100">
+                    <div>
+                        <p class="text-3xl font-black">0 ₽</p>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Вход в сервис</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black">100%</p>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Свобода графика</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black">24/7</p>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Поддержка</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative animate__animated animate__zoomIn">
+                <div class="absolute inset-0 bg-yellow-400/20 blur-[120px] rounded-full"></div>
+                <img src="https://avatars.mds.yandex.net/get-altay/5235198/2a0000017e2e3f4e2f9d865e9d9e6e8e6e5d/orig" alt="Courier" class="relative z-10 w-full h-auto rounded-[60px] shadow-2xl hero-img-anim">
+                
+                <div class="absolute top-10 right-10 z-20 bg-white p-5 rounded-3xl shadow-2xl animate__animated animate__fadeInRight animate__delay-1s">
+                    <p class="text-green-500 font-black text-xl">+15 000 ₽</p>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Бонус за друга</p>
+                </div>
+                <div class="absolute bottom-20 -left-10 z-20 bg-black text-white p-6 rounded-3xl shadow-2xl animate__animated animate__fadeInLeft animate__delay-2s">
+                    <p class="text-yellow-400 font-black text-xl">Ежедневно</p>
+                    <p class="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Выплаты на карту</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Декоративный элемент снизу -->
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
     </section>
 
-    <!-- Калькулятор дохода -->
-    <section id="income" class="py-24 bg-white relative">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="bg-gray-50 rounded-[40px] p-8 md:p-16 shadow-inner border border-gray-100">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-extrabold mb-4">Сколько ты заработаешь?</h2>
-                    <p class="text-gray-500 font-medium italic text-sm">Примерный расчет дохода для курьеров-партнеров</p>
+    <div class="marquee-container">
+        <div class="marquee-content">
+            • Свободный график • Выплаты каждый день • Работа рядом с домом • Бонус новичка • Скидки на еду 70% • Страховка на слоте • Свободный график • Выплаты каждый день • Работа рядом с домом • Бонус новичка • Скидки на еду 70% • Страховка на слоте •
+        </div>
+    </div>
+
+    <section id="benefits" class="py-32 px-6 bg-gray-50/50">
+        <div class="container mx-auto max-w-7xl">
+            <h2 class="text-4xl lg:text-6xl font-black mb-20 text-center tracking-tighter">Всё для вашего <br><span class="text-yellow-400">результата</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto">
+                <div class="md:col-span-8 bento-card flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/2">
+                        <span class="bg-green-100 text-green-600 px-4 py-1 rounded-full text-[10px] font-black uppercase mb-6 inline-block">Акция</span>
+                        <h3 class="text-4xl font-black mb-6 tracking-tight">Никаких задержек</h3>
+                        <p class="text-gray-500 text-lg leading-relaxed">Становитесь самозанятым и получайте деньги на карту любого банка на следующий день. Никакой бумажной волокиты — всё в приложении.</p>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-inner">
+                            <i class="fas fa-credit-card text-7xl text-yellow-400"></i>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="md:col-span-4 bento-card bg-black text-white">
+                    <i class="fas fa-map-marker-alt text-4xl text-yellow-400 mb-8"></i>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">Рядом с домом</h3>
+                    <p class="text-gray-400">Выбирайте районы, которые вы знаете. Никаких поездок на другой конец города без вашего желания.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-card">
+                    <i class="fas fa-shield-alt text-4xl text-blue-500 mb-8"></i>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">Страхование</h3>
+                    <p class="text-gray-500">Бесплатная страховка от несчастных случаев на сумму до 2 000 000 ₽ на время каждого слота.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-card">
+                    <i class="fas fa-tags text-4xl text-green-500 mb-8"></i>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">Скидка 70%</h3>
+                    <p class="text-gray-500">Специальные цены на обеды в ресторанах-партнерах и покупки в Яндекс Лавке для всех активных курьеров.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-card">
+                    <i class="fas fa-bicycle text-4xl text-orange-500 mb-8"></i>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">Техника</h3>
+                    <p class="text-gray-500">Помогаем с арендой велосипедов и самокатов. Скидки на ремонт и обслуживание вашего транспорта.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="income" class="py-32 px-6">
+        <div class="container mx-auto max-w-7xl">
+            <div class="bg-white rounded-[64px] p-10 lg:p-24 shadow-2xl border border-gray-100 grid lg:grid-cols-2 gap-24 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-yellow-400/10 rounded-full -mr-40 -mt-40 blur-3xl"></div>
                 
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-8">
+                <div>
+                    <h2 class="text-5xl font-black mb-12 tracking-tighter leading-tight">Рассчитайте <br>свой доход</h2>
+                    
+                    <div class="space-y-12">
                         <div>
-                            <label class="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Способ доставки</label>
-                            <div class="grid grid-cols-2 gap-4">
-                                <button class="p-4 rounded-2xl border-2 border-yellow-400 bg-yellow-50 font-bold">Пешком / Вело</button>
-                                <button class="p-4 rounded-2xl border-2 border-transparent bg-gray-100 font-bold hover:bg-gray-200 transition">На автомобиле</button>
+                            <p class="text-[10px] font-black uppercase text-gray-400 mb-6 tracking-[3px]">Ваш регион</p>
+                            <select id="geo-mul" onchange="updateCalc()" class="w-full bg-gray-100 py-5 px-8 rounded-3xl font-bold text-lg appearance-none cursor-pointer border-2 border-transparent focus:border-yellow-400 outline-none transition-all">
+                                <option value="1.2">Москва и МО / Санкт-Петербург</option>
+                                <option value="1.0">Крупные города (Екб, Казань, Нск)</option>
+                                <option value="0.8">Другие регионы</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <p class="text-[10px] font-black uppercase text-gray-400 mb-6 tracking-[3px]">Тип передвижения</p>
+                            <div class="grid grid-cols-3 gap-3 bg-gray-100 p-2 rounded-[28px]">
+                                <button onclick="setMode('ped', this)" class="mode-btn active py-4 rounded-[22px] bg-white shadow-md font-bold transition-all">Пешком</button>
+                                <button onclick="setMode('velo', this)" class="mode-btn py-4 rounded-[22px] text-gray-400 font-bold transition-all">Вело</button>
+                                <button onclick="setMode('auto', this)" class="mode-btn py-4 rounded-[22px] text-gray-400 font-bold transition-all">Авто</button>
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Часов в день: <span class="text-black ml-2">8 часов</span></label>
-                            <input type="range" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-yellow-400">
+
+                        <div class="space-y-10">
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Часов в день</span>
+                                    <span id="h-val" class="font-black text-lg">8 ч.</span>
+                                </div>
+                                <input type="range" id="h-range" min="1" max="12" value="8" step="1" oninput="updateCalc()">
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Дней в неделю</span>
+                                    <span id="d-val" class="font-black text-lg">5 дн.</span>
+                                </div>
+                                <input type="range" id="d-range" min="1" max="7" value="5" step="1" oninput="updateCalc()">
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-yellow-400 rounded-3xl p-10 text-center shadow-xl">
-                        <p class="text-sm font-bold uppercase tracking-tighter mb-2 text-black/60 italic">Твой доход в месяц</p>
-                        <p class="text-6xl font-black mb-6">~96 000 ₽</p>
-                        <p class="text-sm font-medium text-black/80 mb-8">Без учета чаевых и бонусов за заказы</p>
-                        <a href="ТВОЯ_ССЫЛКА_ТУТ" class="block w-full bg-black text-white py-4 rounded-2xl font-black hover:bg-zinc-800 transition shadow-lg">
-                            Хочу столько же!
-                        </a>
+                </div>
+
+                <div class="bg-black rounded-[56px] p-12 lg:p-20 text-white flex flex-col justify-between text-center lg:text-left shadow-2xl">
+                    <div>
+                        <span class="text-yellow-400 text-sm font-black uppercase tracking-[4px]">Примерный доход в месяц</span>
+                        <div id="total-income" class="text-7xl lg:text-[100px] font-black text-white mt-6 mb-8 tracking-tighter leading-none">~ 96 000 ₽</div>
+                        <div class="space-y-4 mb-10 text-gray-400 font-medium">
+                            <p class="flex items-center gap-3 justify-center lg:justify-start">
+                                <i class="fas fa-check-circle text-green-500"></i> Без учета чаевых от клиентов
+                            </p>
+                            <p class="flex items-center gap-3 justify-center lg:justify-start">
+                                <i class="fas fa-check-circle text-green-500"></i> Плюс бонусы за погоду и заказы
+                            </p>
+                        </div>
+                    </div>
+                    <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary w-full py-7 text-2xl shadow-xl">Стать партнером</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-gray-50 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-4xl lg:text-5xl font-black mb-16 text-center tracking-tighter">Как лучше оформиться?</h2>
+            
+            <div class="bg-gray-200 p-2 rounded-[32px] flex mb-12">
+                <button onclick="switchTab('sz')" id="tab-sz" class="flex-1 py-5 rounded-[28px] font-black uppercase text-xs tracking-widest transition-all tab-active">Самозанятость (Топ)</button>
+                <button onclick="switchTab('gph')" id="tab-gph" class="flex-1 py-5 rounded-[28px] font-black uppercase text-xs tracking-widest text-gray-400 transition-all">Работа через партнера</button>
+            </div>
+
+            <div id="content-sz" class="bg-white p-10 lg:p-16 rounded-[48px] shadow-xl border border-gray-100 animate__animated animate__fadeIn">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+                            <p class="font-bold text-lg leading-tight">Выплаты каждый день — деньги приходят утром на вашу карту.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+                            <p class="font-bold text-lg leading-tight">Минимальный налог 4-6% — сервис помогает с его оплатой.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+                            <p class="font-bold text-lg leading-tight">Легальный доход — подтверждение для кредитов или виз.</p>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 p-8 rounded-3xl border border-yellow-100">
+                        <p class="text-sm text-gray-600 leading-relaxed italic">«Оформление заняло 10 минут через Госуслуги. Налог платится сам, доход выше за счет отсутствия комиссий посредников. Очень рекомендую!»</p>
+                        <p class="mt-4 font-black text-xs uppercase tracking-widest">— Артем, курьер 2 года</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-gph" class="hidden bg-white p-10 lg:p-16 rounded-[48px] shadow-xl border border-gray-100 animate__animated animate__fadeIn">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6 text-gray-400">
+                        <p class="font-bold text-lg leading-tight">Выплаты раз в неделю через курьерскую службу.</p>
+                        <p class="font-bold text-lg leading-tight">Налог 13% (НДФЛ) удерживается партнером.</p>
+                        <p class="font-bold text-lg leading-tight">Комиссия партнера за перевод средств.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+                        <p class="text-sm text-gray-500 leading-relaxed italic">Этот вариант подходит, если вы категорически не хотите оформлять самозанятость, но он менее выгоден по деньгам.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Преимущества -->
-    <section id="advantages" class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-12 text-center">
-                <div class="group">
-                    <div class="w-24 h-24 bg-gray-50 rounded-[35px] flex items-center justify-center mb-8 mx-auto group-hover:bg-yellow-400 transition-all duration-500 transform group-hover:-rotate-12">
-                        <i class="fas fa-money-bill-wave text-4xl group-hover:text-black"></i>
+    <section id="process" class="py-32 px-6">
+        <div class="container mx-auto max-w-7xl">
+            <h2 class="text-4xl lg:text-5xl font-black mb-24 text-center tracking-tighter">3 шага к <span class="text-yellow-400">первому заказу</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-16 relative">
+                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-100 -z-10"></div>
+                
+                <div class="text-center group">
+                    <div class="w-24 h-24 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center mx-auto mb-10 group-hover:border-yellow-400 transition-all duration-500">
+                        <span class="text-3xl font-black italic">01</span>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-4">Деньги сразу</h3>
-                    <p class="text-gray-500 leading-relaxed px-4">Для самозанятых выплаты приходят ежедневно на карту любого банка.</p>
+                    <h3 class="text-2xl font-black mb-4">Анкета</h3>
+                    <p class="text-gray-400 font-medium">Заполните данные и загрузите фото паспорта онлайн.</p>
                 </div>
-                <div class="group">
-                    <div class="w-24 h-24 bg-gray-50 rounded-[35px] flex items-center justify-center mb-8 mx-auto group-hover:bg-yellow-400 transition-all duration-500 transform group-hover:-rotate-12">
-                        <i class="fas fa-map-marker-alt text-4xl group-hover:text-black"></i>
+
+                <div class="text-center group">
+                    <div class="w-24 h-24 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center mx-auto mb-10 group-hover:border-yellow-400 transition-all duration-500">
+                        <span class="text-3xl font-black italic">02</span>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-4">Район на выбор</h3>
-                    <p class="text-gray-500 leading-relaxed px-4">Доставляй заказы там, где тебе удобно. Рядом с домом или учебой.</p>
+                    <h3 class="text-2xl font-black mb-4">Обучение</h3>
+                    <p class="text-gray-400 font-medium">Пройдите короткий тест и посмотрите инструкции в приложении.</p>
                 </div>
-                <div class="group">
-                    <div class="w-24 h-24 bg-gray-50 rounded-[35px] flex items-center justify-center mb-8 mx-auto group-hover:bg-yellow-400 transition-all duration-500 transform group-hover:-rotate-12">
-                        <i class="fas fa-percentage text-4xl group-hover:text-black"></i>
+
+                <div class="text-center group">
+                    <div class="w-24 h-24 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-10 shadow-2xl animate-bounce">
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-4">Скидка на еду</h3>
-                    <p class="text-gray-500 leading-relaxed px-4">Партнеры получают скидки до 70% на обеды и продукты в Лавке.</p>
+                    <h3 class="text-2xl font-black mb-4 italic">В путь!</h3>
+                    <p class="text-gray-400 font-medium">Заберите сумку в офисе и выходите на линию в удобное время.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-24 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-3xl font-extrabold mb-12 text-center italic underline decoration-yellow-400 underline-offset-8">Частые вопросы</h2>
+    <section id="faq" class="py-32 bg-white px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl lg:text-6xl font-black mb-20 text-center tracking-tighter">Частые вопросы</h2>
+            
             <div class="space-y-4">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h4 class="font-bold mb-2 flex justify-between items-center text-lg">
-                        Нужна ли медицинская книжка?
-                        <i class="fas fa-chevron-down text-xs text-yellow-500"></i>
-                    </h4>
-                    <p class="text-gray-500">Да, но начать можно без нее. Мы поможем с оформлением и дадим направление в партнерскую клинику.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h4 class="font-bold mb-2 flex justify-between items-center text-lg">
-                        Штрафуют ли за опоздания?
-                        <i class="fas fa-chevron-down text-xs text-yellow-500"></i>
-                    </h4>
-                    <p class="text-gray-500">В сервисе нет штрафов. Твой доход зависит от качества выполнения заказов и отзывов клиентов.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h4 class="font-bold mb-2 flex justify-between items-center text-lg">
-                        Какая форма выдается?
-                        <i class="fas fa-chevron-down text-xs text-yellow-500"></i>
-                    </h4>
-                    <p class="text-gray-500">Бесплатная куртка и термосумка выдаются в первый день. Экипировка удобная и подходит для любой погоды.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Финальный призыв -->
-    <section class="py-32 yandex-yellow relative overflow-hidden">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-5xl md:text-7xl font-black mb-8 italic uppercase">Стань частью команды!</h2>
-            <p class="text-2xl font-bold mb-12 opacity-80">Регистрация займет меньше 10 минут.</p>
-            <a href="ТВОЯ_ССЫЛКА_ТУТ" class="inline-block bg-black text-white px-20 py-8 rounded-[30px] font-black text-3xl hover:scale-110 transition shadow-2xl pulse-button uppercase tracking-tighter">
-                Присоединиться
-            </a>
-        </div>
-        <div class="absolute top-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
-            <i class="fas fa-bicycle text-[30rem]"></i>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 py-20 text-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12 border-b border-white/10 pb-12">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 yandex-yellow rounded-xl flex items-center justify-center">
-                        <span class="font-black text-xl text-black">Я</span>
+                <div class="faq-item border border-gray-100 rounded-[32px] p-8 hover:border-yellow-400 transition-all cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl md:text-2xl font-black tracking-tight leading-tight">Какие документы нужны для старта?</span>
+                        <div class="faq-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center transition-all">
+                            <i class="fas fa-plus text-sm"></i>
+                        </div>
                     </div>
-                    <span class="font-black text-xl tracking-tighter">ПАРТНЕРСКИЙ ПОРТАЛ</span>
+                    <div class="faq-ans text-gray-500 text-lg leading-relaxed">
+                        Для граждан РФ нужен паспорт и реквизиты карты любого банка. Для иностранных граждан список зависит от страны (патент, ВНЖ, миграционная карта). Мы помогаем с оформлением на каждом этапе.
+                    </div>
                 </div>
-                <div class="flex space-x-6 text-2xl opacity-50">
-                    <i class="fab fa-telegram hover:opacity-100 transition cursor-pointer"></i>
-                    <i class="fab fa-vk hover:opacity-100 transition cursor-pointer"></i>
-                    <i class="fab fa-youtube hover:opacity-100 transition cursor-pointer"></i>
+
+                <div class="faq-item border border-gray-100 rounded-[32px] p-8 hover:border-yellow-400 transition-all cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl md:text-2xl font-black tracking-tight leading-tight">Сколько времени занимает регистрация?</span>
+                        <div class="faq-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center transition-all">
+                            <i class="fas fa-plus text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="faq-ans text-gray-500 text-lg leading-relaxed">
+                        Обычно от заполнения анкеты до первого заказа проходит 1-2 дня. Основное время уходит на проверку документов и получение экипировки в офисе.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-100 rounded-[32px] p-8 hover:border-yellow-400 transition-all cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl md:text-2xl font-black tracking-tight leading-tight">Можно ли совмещать с основной работой?</span>
+                        <div class="faq-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center transition-all">
+                            <i class="fas fa-plus text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="faq-ans text-gray-500 text-lg leading-relaxed">
+                        Да! Это идеальный вариант подработки. Вы сами открываете и закрываете смену в приложении. Многие курьеры выходят только на 2-3 часа вечером или по выходным.
+                    </div>
                 </div>
             </div>
-            <div class="max-w-4xl mx-auto text-center opacity-40">
-                <p class="text-[11px] font-medium leading-relaxed uppercase tracking-widest">
-                    Сервис Яндекс.Еда — информационный сервис. Услуги по доставке оказываются партнерами. Указанный доход является ориентировочным. 2026.
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-32 pb-16 px-6">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid lg:grid-cols-4 gap-20 mb-20">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-12 h-12 bg-yellow-400 text-black flex items-center justify-center rounded-2xl font-black text-2xl">Я</div>
+                        <h2 class="text-3xl font-black tracking-tighter uppercase">Еда Партнеры</h2>
+                    </div>
+                    <p class="text-gray-500 text-lg max-w-sm mb-12 leading-relaxed font-medium">Станьте частью команды лидеров рынка доставки. Официальный партнер по набору персонала.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center text-xl hover:bg-yellow-400 hover:text-black transition"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center text-xl hover:bg-yellow-400 hover:text-black transition"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-black text-[10px] uppercase tracking-[4px] mb-10 text-yellow-400">Навигация</h4>
+                    <ul class="space-y-5 text-gray-400 font-bold text-sm uppercase tracking-widest">
+                        <li><a href="#benefits" class="hover:text-white transition">Преимущества</a></li>
+                        <li><a href="#income" class="hover:text-white transition">Калькулятор</a></li>
+                        <li><a href="#process" class="hover:text-white transition">Как начать</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">Помощь</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-black text-[10px] uppercase tracking-[4px] mb-10 text-yellow-400">Юридически</h4>
+                    <ul class="space-y-5 text-gray-400 font-bold text-sm uppercase tracking-widest">
+                        <li><a href="#" class="hover:text-white transition">Оферта</a></li>
+                        <li><a href="#" class="hover:text-white transition">Приватность</a></li>
+                        <li><a href="#" class="hover:text-white transition">Условия набора</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-10">
+                <p class="text-[10px] text-gray-600 font-bold uppercase tracking-[3px] text-center md:text-left leading-relaxed">
+                    © 2026 Яндекс.Еда — Информационный сервис. Услуги по доставке оказываются партнерами. <br>
+                    Торговые марки Яндекса используются на основании лицензии.
                 </p>
+                <a href="ТВОЯ_ССЫЛКА_ТУТ" class="btn-primary px-12 py-5 text-xs uppercase tracking-widest">Регистрация</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Изменение цвета шапки при скролле
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar');
-            const brandText = document.querySelector('.nav-brand-text');
-            const links = document.querySelector('.nav-links');
-            
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-                brandText.classList.remove('text-white');
-                brandText.classList.add('text-black');
-                links.classList.remove('text-white');
-                links.classList.add('text-gray-700');
-            } else {
-                nav.classList.remove('scrolled');
-                brandText.classList.remove('text-black');
-                brandText.classList.add('text-white');
-                links.classList.remove('text-gray-700');
-                links.classList.add('text-white');
-            }
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-p").style.width = scrolled + "%";
         });
+
+        // Calculator Logic
+        let mode = 'ped';
+        const baseRates = { ped: 450, velo: 650, auto: 950 };
+
+        function setMode(type, btn) {
+            mode = type;
+            document.querySelectorAll('.mode-btn').forEach(b => {
+                b.classList.remove('bg-white', 'shadow-md', 'text-black');
+                b.classList.add('text-gray-400');
+            });
+            btn.classList.add('bg-white', 'shadow-md', 'text-black');
+            btn.classList.remove('text-gray-400');
+            updateCalc();
+        }
+
+        function updateCalc() {
+            const h = document.getElementById('h-range').value;
+            const d = document.getElementById('d-range').value;
+            const geoMul = document.getElementById('geo-mul').value;
+
+            document.getElementById('h-val').innerText = h + ' ч.';
+            document.getElementById('d-val').innerText = d + ' дн.';
+
+            const total = Math.round(h * d * baseRates[mode] * geoMul * 4);
+            document.getElementById('total-income').innerText = '~ ' + total.toLocaleString() + ' ₽';
+        }
+
+        // Tabs Logic
+        function switchTab(type) {
+            const tabs = { sz: document.getElementById('tab-sz'), gph: document.getElementById('tab-gph') };
+            const contents = { sz: document.getElementById('content-sz'), gph: document.getElementById('content-gph') };
+
+            Object.values(tabs).forEach(t => t.classList.remove('tab-active'));
+            Object.values(contents).forEach(c => c.classList.add('hidden'));
+
+            tabs[type].classList.add('tab-active');
+            contents[type].classList.remove('hidden');
+        }
+
+        // FAQ Logic
+        function toggleFaq(el) {
+            el.classList.toggle('active');
+        }
+
+        // Initialization
+        updateCalc();
     </script>
 </body>
-
 </html>
